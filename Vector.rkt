@@ -1,6 +1,6 @@
 #lang racket
 
-(provide createVector Vector->list Vector-add Vector-mult Vector-neg)
+(provide createVector Vector->list Vector-add Vector-mult Vector-neg list->Vector Vector-dot Vector-get-dim)
 
 (require "helpers.rkt")
 
@@ -13,6 +13,7 @@
 (define createVector (lambda coords (make-Vector coords)))
 
 (define (Vector->list vec) (Vector-coords vec))
+(define (list->Vector coords) (make-Vector coords))
 
 ;; Vector-x, Vector-y, Vector-z: Vector -> Num
 (define (Vector-x vec) (first (Vector-coords vec)))
