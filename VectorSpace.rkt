@@ -2,4 +2,3 @@
 
 (define-struct VectorSpace (dirs))
 
-()

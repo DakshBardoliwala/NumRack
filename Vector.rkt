@@ -1,6 +1,8 @@
 #lang racket
 
-(provide createVector)
+(provide createVector Vector->list Vector-add Vector-mult Vector-neg)
+
+(require "helpers.rkt")
 
 (define-struct Vector (coords))
 ;; A Vector is either a :
@@ -9,6 +11,8 @@
 
 ;; createVector: Num Num ... Num Num -> Vector
 (define createVector (lambda coords (make-Vector coords)))
+
+(define (Vector->list vec) (Vector-coords vec))
 
 ;; Vector-x, Vector-y, Vector-z: Vector -> Num
 (define (Vector-x vec) (first (Vector-coords vec)))
@@ -32,10 +36,16 @@
 (define (Vector-get-dim vec dim) (list-ref (Vector-coords vec) dim))
 
 ;; Vector-add: Vector Vector -> Vector
+
+(define (Vector-add vec1 vec2) (make-Vector (map2 + (Vector->list vec1) (Vector->list vec2))))
+
+#|
 (define (Vector-add vec1 vec2) (make-Vector (map (lambda (i) (cond [(>= i (Vector-dims vec1)) (Vector-get-dim vec2 i)]
                                                       [(>= i (Vector-dims vec2)) (Vector-get-dim vec1 i)]
                                                       [else (+ (Vector-get-dim vec1 i) (Vector-get-dim vec2 i))]))
                                     (build-list (max (Vector-dims vec1) (Vector-dims vec2)) (lambda (x) x)))))
+|#
+
 
 ;; Vector-neg: Vector -> Vector
 (define (Vector-neg vec) (make-Vector (map (lambda (x) (- 0 x)) (Vector-coords vec))))
