@@ -9,6 +9,7 @@
 ;;   * (make-Vector (listof Num))
 
 
+
 ;; createVector: Num Num ... Num Num -> Vector
 (define createVector (lambda coords (make-Vector coords)))
 
