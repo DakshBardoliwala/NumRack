@@ -1,2 +1,2 @@
 # NumRack
-Racket Library for Vectors. Inspiration from NumPy
+Racket Library for Lienar Algebra. Inspiration from NumPy
